@@ -121,7 +121,7 @@ const App = () => {
       <div className="w-full z-10">
         {displayRes && (
           <MapContainer
-            center={[displayRes.lat, displayRes.lng]}
+            center={[displayRes.lat, displayRes.lng] as [number, number]}
             zoom={13}
             scrollWheelZoom
             style={{ height: "400px", width: "100%" }}
