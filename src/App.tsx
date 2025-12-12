@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./App.css";
 
 // images & icon
 import ArrowIcon from "./images/icon-arrow.svg";
+import LocationIcon from "./images/icon-location.svg";
 
 // api-key
 const MAP_API_KEY = import.meta.env.VITE_API_KEY;
@@ -22,6 +24,12 @@ type ResultState = {
 const App = () => {
   const [displayRes, setDisplayRes] = useState<ResultState | null>(null);
   const [search, setSearch] = useState<string | number>("8.8.8.8");
+
+  const customMarkedIcon = new Icon({
+    iconUrl: LocationIcon,
+    iconSize: [35, 35],
+    iconAnchor: [20, 40],
+  });
 
   const searchIp = async () => {
     try {
@@ -128,7 +136,10 @@ const App = () => {
             style={{ height: "400px", width: "100%" }}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={[displayRes.lat, displayRes.lng]}>
+            <Marker
+              position={[displayRes.lat, displayRes.lng]}
+              icon={customMarkedIcon}
+            >
               <Popup>
                 IP: {displayRes.ip} <br />
                 Location: {displayRes.city}
