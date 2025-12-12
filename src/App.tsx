@@ -121,6 +121,7 @@ const App = () => {
       <div className="w-full z-10">
         {displayRes && (
           <MapContainer
+            // @ts-ignore
             center={[displayRes.lat, displayRes.lng] as [number, number]}
             zoom={13}
             scrollWheelZoom
