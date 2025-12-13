@@ -118,7 +118,7 @@ const App = () => {
         </div>
       </div>
 
-      <div className="w-full z-10">
+      <div className="w-full max-sm:h-full z-10">
         {displayRes && (
           <MapContainer
             // @ts-ignore
